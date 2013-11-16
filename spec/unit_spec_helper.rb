@@ -37,7 +37,7 @@ end
 
 puts "Using #{$adapter} adapter."
 
-DataStoreMain.establish_connection(DATABASE_CONFIG[$adapter])
+ActiveRecord::Base.establish_connection(DATABASE_CONFIG[$adapter])
 
 require 'generators/templates/create_rapns_notifications'
 require 'generators/templates/create_rapns_feedback'
