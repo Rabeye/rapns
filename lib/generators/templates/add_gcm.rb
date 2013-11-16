@@ -1,10 +1,10 @@
 class AddGcm < ActiveRecord::Migration
   module Rapns
-    class App < ActiveRecord::Base
+    class App < DataStoreMain
       self.table_name = 'rapns_apps'
     end
 
-    class Notification < ActiveRecord::Base
+    class Notification < DataStoreMain
       belongs_to :app
       self.table_name = 'rapns_notifications'
     end
@@ -35,7 +35,7 @@ class AddGcm < ActiveRecord::Migration
     add_column :rapns_notifications, :collapse_key, :string, :null => true
     add_column :rapns_notifications, :delay_while_idle, :boolean, :null => false, :default => false
 
-    reg_ids_type = ActiveRecord::Base.connection.adapter_name.include?('Mysql') ? :mediumtext : :text
+    reg_ids_type = DataStoreMain.connection.adapter_name.include?('Mysql') ? :mediumtext : :text
     add_column :rapns_notifications, :registration_ids, reg_ids_type, :null => true
     add_column :rapns_notifications, :app_id, :integer, :null => true
     add_column :rapns_notifications, :retries, :integer, :null => true, :default => 0

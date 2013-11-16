@@ -48,8 +48,8 @@ describe Rapns::Daemon::Store::ActiveRecord::Reconnectable do
     @logger = double("Logger", :info => nil, :error => nil, :warn => nil)
     Rapns.stub(:logger).and_return(@logger)
 
-    ActiveRecord::Base.stub(:clear_all_connections!)
-    ActiveRecord::Base.stub(:establish_connection)
+    DataStoreMain.stub(:clear_all_connections!)
+    DataStoreMain.stub(:establish_connection)
     test_double.stub(:sleep)
   end
 
@@ -69,12 +69,12 @@ describe Rapns::Daemon::Store::ActiveRecord::Reconnectable do
   end
 
   it "should clear all connections" do
-    ActiveRecord::Base.should_receive(:clear_all_connections!)
+    DataStoreMain.should_receive(:clear_all_connections!)
     test_double.perform
   end
 
   it "should establish a new connection" do
-    ActiveRecord::Base.should_receive(:establish_connection)
+    DataStoreMain.should_receive(:establish_connection)
     test_double.perform
   end
 

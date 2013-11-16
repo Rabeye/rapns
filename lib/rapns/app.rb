@@ -1,5 +1,5 @@
 module Rapns
-  class App < ActiveRecord::Base
+  class App < DataStoreMain
     self.table_name = 'rapns_apps'
 
     if Rapns.attr_accessible_available?

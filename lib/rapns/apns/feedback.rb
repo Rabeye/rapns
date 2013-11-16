@@ -1,6 +1,6 @@
 module Rapns
   module Apns
-    class Feedback < ActiveRecord::Base
+    class Feedback < DataStoreMain
       self.table_name = 'rapns_feedback'
 
       if Rapns.attr_accessible_available?

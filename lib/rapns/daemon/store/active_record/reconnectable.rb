@@ -19,7 +19,7 @@ module Rapns
 
           def with_database_reconnect_and_retry
             begin
-              ::ActiveRecord::Base.connection_pool.with_connection do
+              ::DataStoreMain.connection_pool.with_connection do
                 yield
               end
             rescue *ADAPTER_ERRORS => e
@@ -47,8 +47,8 @@ module Rapns
           end
 
           def reconnect_database
-            ::ActiveRecord::Base.clear_all_connections!
-            ::ActiveRecord::Base.establish_connection
+            ::DataStoreMain.clear_all_connections!
+            ::DataStoreMain.establish_connection
           end
 
           def check_database_is_connected

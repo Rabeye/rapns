@@ -1,5 +1,5 @@
 module Rapns
-  class Notification < ActiveRecord::Base
+  class Notification < DataStoreMain
     include Rapns::MultiJsonHelper
 
     self.table_name = 'rapns_notifications'
