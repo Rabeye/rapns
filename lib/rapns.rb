@@ -1,5 +1,6 @@
 require 'active_record'
 require 'multi_json'
+require 'data_store_main'
 
 module Rapns
   def self.attr_accessible_available?
