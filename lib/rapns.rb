@@ -10,6 +10,7 @@ module Rapns
   end
 end
 
+require 'rapns/data_store_main'
 require 'rapns/version'
 require 'rapns/deprecation'
 require 'rapns/deprecatable'
